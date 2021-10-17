@@ -1,0 +1,28 @@
+GET http://localhost:5000/checkhealth HTTP/1.1
+
+###
+
+POST http://localhost:5000/api/v1.0/Order/Add HTTP/1.1
+content-type: application/json
+
+{
+  "id": "1",
+  "productId": "1",
+  "cost": 10,
+  "placed": "2021-10-17T16:22:22.827Z",
+  "customerId": "1",
+  "status": "Created"
+}
+
+###
+
+GET http://localhost:5000/api/v1.0/Order/GetByCustomerId/1 HTTP/1.1
+
+###
+
+GET http://localhost:5000/api/v1.0/Order/GetById/1 HTTP/1.1
+
+###
+
+DELETE http://localhost:5000/api/v1.0/Order/Cancel/1 HTTP/1.1
+accept: */*

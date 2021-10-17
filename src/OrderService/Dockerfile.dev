@@ -1,0 +1,14 @@
+FROM mcr.microsoft.com/dotnet/sdk:5.0
+
+RUN dotnet tool install --global dotnet-ef
+
+ENV DOCKERIZE_VERSION v0.6.1
+RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
+    && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
+    && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+
+WORKDIR /home/api/src
+
+ENV PATH="$PATH:/root/.dotnet/tools"
+
+EXPOSE 80
